@@ -4,7 +4,7 @@ const cors = require("cors");
 const Admin = require('./models/Admin');
 require('dotenv').config();
 
-const dburl = process.env.MONGO_URL || "mongodb://project-mongodb-1:27017/sdp4";
+const dburl = process.env.MONGO_URL;
 mongoose.connect(dburl).then(async () => {
     console.log("Connected to DB Successfully");
 

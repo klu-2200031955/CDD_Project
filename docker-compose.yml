@@ -12,17 +12,17 @@ services:
       - "2032:2032"
     networks:
       - mern
-    depends_on:
-      - mongodb
+    # depends_on:
+    #   - mongodb
 
-  mongodb:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    networks:
-      - mern
-    volumes:
-      - mongo-data:/data/db
+  # mongodb:
+  #   image: mongo:latest
+  #   ports:
+  #     - "27017:27017"
+  #   networks:
+  #     - mern
+  #   volumes:
+  #     - mongo-data:/data/db
 
 networks:
   mern:
