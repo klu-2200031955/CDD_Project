@@ -28,6 +28,6 @@ networks:
   mern:
     driver: bridge
 
-volumes:
-  mongo-data:
-    driver: local
+# volumes:
+#   mongo-data:
+#     driver: local
