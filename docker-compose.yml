@@ -1,3 +1,5 @@
+version: "3"
+
 services:
   frontend:
     build: ./frontendapp
@@ -10,6 +12,18 @@ services:
     build: ./backendapp
     ports:
       - "2032:2032"
+    networks:
+      - mern
+
+  nagios:
+    image: jasonrivers/nagios
+    container_name: nagios
+    ports:
+      - "8081:80"
+    environment:
+      - NAGIOS_FQDN=nagios.local
+    volumes:
+      - ./nagios/mern.cfg:/opt/nagios/etc/servers/mern.cfg
     networks:
       - mern
 
