@@ -15,9 +15,8 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    // Ensure the latest versions of Docker images are pulled
-                    sh 'docker-compose pull'
-                    sh 'docker-compose build'
+                    bat  'docker-compose pull'
+                    bat  'docker-compose build'
                 }
             }
         }
@@ -25,10 +24,8 @@ pipeline {
         stage('Deploy Services') {
             steps {
                 script {
-                    // Stop and remove any previous containers if they're running
-                    sh 'docker-compose down --volumes --remove-orphans'
-                    // Start up the services
-                    sh 'docker-compose up -d'
+                    bat  'docker-compose down --volumes --remove-orphans'
+                    bat  'docker-compose up -d'
                 }
             }
         }
@@ -36,8 +33,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 script {
-                    // List running containers to verify the deployment
-                    sh 'docker ps'
+                    bat  'docker ps'
                 }
             }
         }
@@ -51,8 +47,7 @@ pipeline {
             echo 'Deployment Failed.'
         }
         always {
-            // Clean up unused Docker images and containers
-            sh 'docker system prune -af'
+            bat  'docker system prune -af'
         }
     }
 }
