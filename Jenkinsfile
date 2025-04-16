@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/klu-2200031955/Project.git' // replace with your repo
+                git url: 'https://github.com/klu-2200031955/Project.git', branch: 'main'
             }
         }
 
